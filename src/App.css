@@ -1,10 +1,59 @@
 .lista-pokemones {
-  list-style-type: disc;
-  padding-left: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  padding-top: 20px;
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
-.jordi-wild {
-  width:100px;
+.pokemon-card {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: capitalize;
+  transition: transform 0.2s;
+}
+
+.pokemon-card:hover {
+  transform: translateY(-5px);
+}
+
+.pokemon-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+}
+
+.app-header {
+  background-color: #2c2c2a;
+  padding: 20px;
+  text-align: center;
+  color: #ececed;
+  font-size: 36px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.detail-container {
+  text-align: center;
+  padding: 20px;
+  text-transform: capitalize;
+}
+
+.detail-image {
+  display: block; 
+  margin-left: auto;
+  margin-right: auto;
+  
+  width: 300px; 
   height: auto;
-  margin-top: 20px;
+  
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
 }
