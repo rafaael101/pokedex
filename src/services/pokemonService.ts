@@ -1,15 +1,23 @@
 import axios from "axios";
+import type { PokemonListado } from '../types/pokemon';
 
 export const getPokemonData = async () => {
     try {
-        const response = await axios.get("https://pokeapi.co/api/v2/pokemon?limit=20");
-        return response.data.results;
-    }
-    catch (error) {
-        console.error("Error fetching Pokémon data:", error);
+        const response = await axios.get("https://pokeapi.co/api/v2/pokemon?limit=30");
+        const listaInicio = response.data.results;
+
+        const promesasDetalles = listaInicio.map(async (pokemonInicio: PokemonListado) => {
+            const detalleResponse = await axios.get(pokemonInicio.url);
+            return detalleResponse.data; 
+        });
+
+        const listaDetalles = await Promise.all(promesasDetalles);
+        return listaDetalles;
+    } catch (error) {
+        console.error("Error fetching data:", error);
         throw error;
     }
-}
+};
 
 export const getPokemonDetail = async (name: string) => {
     try {

@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getPokemonDetail } from '../services/pokemonService';
 import type { PokemonDetails } from '../types/pokemon';
+import { mapColorsType } from '../utils/typeColors';
 
 export function PokemonDetail() {
     const { name } = useParams();
@@ -72,7 +73,7 @@ export function PokemonDetail() {
                             {pokemon.types.map((tipoActual) => (
                                 <span
                                     key={tipoActual.type.name}
-                                    className="bg-[#525250] text-white px-6 py-1 rounded-md capitalize font-semibold"
+                                    className={`${mapColorsType[tipoActual.type.name] || 'bg-gray-500'} text-white px-6 py-1 rounded-md capitalize font-semibold`}
                                 >
                                     {tipoActual.type.name}
                                 </span>
