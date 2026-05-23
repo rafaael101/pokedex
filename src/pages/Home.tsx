@@ -11,6 +11,7 @@ function Home() {
   const [error, setError] = useState(false);
   const [busqueda, setBusqueda] = useState("");
   const [tipoSeleccionado, setTipoSeleccionado] = useState("");
+  const [mostrarSoloFavoritos, setMostrarSoloFavoritos] = useState(false);
   const [favoritos, setFavoritos] = useState<string[]>(() => {
     const guardados = localStorage.getItem("misFavoritos");
     return guardados ? JSON.parse(guardados) : [];
@@ -42,7 +43,11 @@ function Home() {
       ? true 
       : pokemon.types.some((t) => t.type.name === tipoSeleccionado);
       
-    return busquedaNombre && busquedaTipo;
+    const busquedaFavorito = mostrarSoloFavoritos 
+      ? favoritos.includes(pokemon.name) 
+      : true;
+    
+    return busquedaNombre && busquedaTipo && busquedaFavorito;
   });
 
   // agregar o quitar de favoritos
@@ -100,6 +105,20 @@ function Home() {
             </button>
           ))}
         </div>
+      </div>
+
+      <div className="flex justify-center mb-8">
+        <button
+          onClick={() => setMostrarSoloFavoritos(!mostrarSoloFavoritos)} 
+          className={`px-6 py-2 rounded-full font-bold shadow-sm transition-all flex items-center gap-2
+            ${mostrarSoloFavoritos 
+              ? 'bg-red-500 text-white ring-4 ring-red-200 hover:bg-red-600' 
+              : 'bg-white text-gray-700 border-2 border-gray-300 hover:bg-gray-50'
+            }
+          `}
+        >
+          {mostrarSoloFavoritos ? 'Mostrando mis favoritos' : 'Filtrar por favoritos'}
+        </button>
       </div>
       
       {pokemonesFiltrados.length === 0 ? (

@@ -3,7 +3,7 @@ import type { PokemonListado } from '../types/pokemon';
 
 export const getPokemonData = async () => {
     try {
-        const response = await axios.get("https://pokeapi.co/api/v2/pokemon?limit=30");
+        const response = await axios.get("https://pokeapi.co/api/v2/pokemon?limit=151");
         const listaInicio = response.data.results;
 
         const promesasDetalles = listaInicio.map(async (pokemonInicio: PokemonListado) => {

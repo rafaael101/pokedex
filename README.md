@@ -1,73 +1,39 @@
-# React + TypeScript + Vite
+# Pokédex
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicación web desarrollada en React para la consulta, filtrado y comparación de estadísticas de Pokémon utilizando la [PokéAPI](https://pokeapi.co/).
 
-Currently, two official plugins are available:
+## Tecnologías Utilizadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+* **Frontend:** React
+* **Lenguaje:** TypeScript
+* **Bundler:** Vite
+* **Estilos:** Tailwind CSS / CSS puro
+* **Enrutamiento:** React Router DOM v6
+* **Cliente HTTP:** Axios
+* **Persistencia:** LocalStorage API
 
-## React Compiler
+## Requisitos Previos
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Para ejecutar este proyecto en tu propia computadora, necesitas tener instalado:
+* [Node.js](https://nodejs.org/) (Versión 18.0 o superior)
+* NPM
 
-## Expanding the ESLint configuration
+## Instrucciones de Ejecución
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Pasos en la terminal para levantar el entorno de desarrollo:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+1. **Clonar o descomprimir el proyecto:**
+   Abre la terminal y navega hasta la carpeta raíz del proyecto (donde esta este archivo `README.md` y el `package.json`).
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+2. **Instalar las dependencias:**
+   Ejecutar el siguiente comando para descargar todas las librerías necesarias (se creará la carpeta `node_modules`):
+   ```bash
+   npm install
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+3. **Ejecutar el servidor de desarrollo:**
+   Ejecutar el siguiente comando para levantar el proyecto una vez finalizada la instalación:
+   ```bash
+   npm run dev
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+4. **Abrir la aplicación:**
+   La terminal mostrará una dirección local, copiar dicha dirección y pegarla en la barra de busqueda de tu navegador para abrir la pokedex.
